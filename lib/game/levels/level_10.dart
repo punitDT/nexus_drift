@@ -93,8 +93,8 @@ class Level10 extends Component with HasGameReference<NexusDriftGame> {
     add(VanishingPlatform(
       position: Vector2(85.0, 15.0),
       size: Vector2(20, 3),
-      visibleDuration: 4.0,
-      vanishDuration: 1.5,
+      visibleDuration: 3.0,
+      vanishDuration: 2.0,
     ));
 
     // 7. Platforms & Hazards
@@ -118,11 +118,13 @@ class Level10 extends Component with HasGameReference<NexusDriftGame> {
     ));
     
     // 8. Plasma Orbs (Must collect 5)
-    add(PlasmaOrb(position: Vector2(-60.0, -30.0), radius: 3.0, fuelAmount: 15.0));
-    add(PlasmaOrb(position: Vector2(-15.0, 15.0), radius: 3.0, fuelAmount: 15.0));
-    add(PlasmaOrb(position: Vector2(40.0, -45.0), radius: 3.0, fuelAmount: 15.0));
-    add(PlasmaOrb(position: Vector2(90.0, -25.0), radius: 3.0, fuelAmount: 15.0));
-    add(PlasmaOrb(position: Vector2(55.0, 50.0), radius: 3.0, fuelAmount: 15.0));
+    // 8. Plasma Orbs (Must collect 5)
+    // Guide: 0.8-1.0x drone radius (2.5) -> ~2.0 - 2.5
+    add(PlasmaOrb(position: Vector2(-60.0, -30.0), radius: 2.3, fuelAmount: 15.0));
+    add(PlasmaOrb(position: Vector2(-15.0, 15.0), radius: 2.3, fuelAmount: 15.0));
+    add(PlasmaOrb(position: Vector2(40.0, -45.0), radius: 2.3, fuelAmount: 15.0));
+    add(PlasmaOrb(position: Vector2(90.0, -25.0), radius: 2.3, fuelAmount: 15.0));
+    add(PlasmaOrb(position: Vector2(55.0, 50.0), radius: 2.3, fuelAmount: 15.0));
     
     // 9. Nexus Core Portal
     final portalPos = Vector2(115.0, 55.0);
@@ -141,8 +143,8 @@ class Level10 extends Component with HasGameReference<NexusDriftGame> {
             (random.nextDouble() - 0.5) * 25,
         );
         final velocity = Vector2(
-            (random.nextDouble() - 0.5) * 50,
-            (random.nextDouble() - 0.5) * 50,
+            (random.nextDouble() - 0.5) * 350, // L10 chaos
+            (random.nextDouble() - 0.5) * 350,
         );
         add(SpaceDebris(
             initialPosition: center + offset,

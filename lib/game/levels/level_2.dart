@@ -32,19 +32,19 @@ class Level2 extends Component with HasGameReference<NexusDriftGame> {
       position: Vector2(-30.0, 20.0),
       size: Vector2(25, 4),
       endPosition: Vector2(40.0, 20.0),
-      speed: 25.0, // px/sec
+      speed: 90.0, // Guide: 80-120 px/sec
     ));
     
     // 3. Plasma Orbs
     // Orb 1: Predictive path
     add(PlasmaOrb(
-      position: Vector2(-20.0, -15.0),
+      position: Vector2(-20.0, -18.0), // Guide: 0.42w -> -20, 0.35h -> -18
       radius: 4.5, // 1.8x drone radius
       fuelAmount: 25.0,
     ));
     // Orb 2: Near the end
     add(PlasmaOrb(
-      position: Vector2(50.0, -5.0),
+      position: Vector2(37.5, -6.0), // Guide: 0.65w -> 37.5, 0.45h -> -6
       radius: 4.5,
       fuelAmount: 25.0,
     ));

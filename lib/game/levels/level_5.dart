@@ -73,9 +73,9 @@ class Level5 extends Component with HasGameReference<NexusDriftGame> {
       radius: 3.5, // 1.4x drone radius
       fuelAmount: 22.0,
     ));
-    // Orb 2: Risky near Rotating / Hazard
+    // Orb 2: Risky near Rotating / Hazard (Below, per ASCII)
     add(PlasmaOrb(
-      position: Vector2(45.0, -5.0),
+      position: Vector2(45.0, 30.0), // Y=15 is rotating, so 30 is below
       radius: 3.5,
       fuelAmount: 22.0,
     ));

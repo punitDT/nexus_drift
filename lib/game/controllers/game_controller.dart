@@ -50,10 +50,11 @@ class GameController extends GetxController {
   }
 
   void consumeFuel(double customCost) {
-    if (fuel.value > 0) {
-      fuel.value -= customCost;
-      if (fuel.value < 0) fuel.value = 0;
-    }
+    // Unlimited fuel for all levels
+    // if (fuel.value > 0) {
+    //   fuel.value -= customCost;
+    //   if (fuel.value < 0) fuel.value = 0;
+    // }
   }
   
   void addFuel(double amount) {

@@ -29,103 +29,104 @@ class Level8 extends Component with HasGameReference<NexusDriftGame> {
     game.drone = drone;
     add(drone);
     
-    // 2. Black Hole (The Void) - Central
+    // 2. Black Hole (The Void) - Right Center
     add(BlackHole(
-      position: Vector2(30.0, 10.0),
-      pullRadius: 55.0,
-      horizonRadius: 7.0,
-      maxPullForce: 8000.0,
+      position: Vector2(75.0, 5.0), // Shifted left to fit sequence
+      pullRadius: 50.0,
+      horizonRadius: 9.0,
+      maxPullForce: 8500.0,
     ));
 
     // 3. Solar Wind Zones
-    // Early wind pushing RIGHT
+    // Early wind pushing RIGHT (Start)
     add(SolarWindZone(
-      position: Vector2(-60.0, -15.0),
-      size: Vector2(40, 20),
-      windForce: Vector2(2500.0, 0),
+      position: Vector2(-60.0, -10.0),
+      size: Vector2(45, 20),
+      // Force 1500 px/s / mass 20 = 75 px/s?? No, windForce is force. 
+      // Guide says 100-180 px/s push. 
+      // If mass=20, force needs to be 2000-3600.
+      windForce: Vector2(3000.0, 0),
     ));
-    // Late wind pushing UP/RIGHT near exit
+    // Late wind pushing RIGHT (End, per ➤➤➤)
     add(SolarWindZone(
-      position: Vector2(90.0, 30.0),
-      size: Vector2(30, 30),
-      windForce: Vector2(2000.0, -1000.0),
+      position: Vector2(110.0, 35.0), // Far right
+      size: Vector2(30, 25),
+      windForce: Vector2(3000.0, 0),
     ));
 
     // 4. Magnets
-    // Magnet N (Attract) near Rotating
+    // Magnet N (Attract) - Left Side
     add(MagneticCoil(
-      position: Vector2(-20.0, 15.0),
+      position: Vector2(-15.0, 10.0),
       radius: 35.0,
-      strength: 4000.0,
+      strength: 4200.0,
       polarity: MagnetPolarity.north,
     ));
     
-    // Magnet S (Repel) near Exit
+    // Magnet S (Repel) - Right Side (Before Exit)
     add(MagneticCoil(
-      position: Vector2(100.0, 0.0),
-      radius: 40.0,
-      strength: 5000.0,
+      position: Vector2(95.0, -5.0),
+      radius: 38.0,
+      strength: 4800.0,
       polarity: MagnetPolarity.south,
     ));
 
     // 5. Platforms & Hazards
-    
-    // Moving Platform A (Top-ish)
     add(MovingPlatform(
-      position: Vector2(-50.0, -10.0),
+      position: Vector2(-45.0, -15.0),
       size: Vector2(25, 4),
-      endPosition: Vector2(-10.0, -10.0),
+      endPosition: Vector2(-5.0, -15.0),
       speed: 150.0,
     ));
     
-    // Radiation Zone (Narrow corridor above Black Hole)
+    // Radiation Zone (Middle Corridor)
     add(RadiationZone(
-      position: Vector2(20.0, -20.0),
-      size: Vector2(60, 10),
+      position: Vector2(15.0, -25.0),
+      size: Vector2(50, 12),
       damageRate: 15.0,
     ));
     
-    // Rotating Platform (Middle Right)
+    // Rotating Platform (Center Right)
     add(RotatingPlatform(
-      position: Vector2(70.0, -5.0),
-      size: Vector2(30, 4),
-      angularSpeed: 2.2,
+      position: Vector2(40.0, -5.0), // Before Black Hole
+      size: Vector2(28, 4),
+      angularSpeed: 2.3,
     ));
     
     // Moving Platform B (Bottom)
     add(MovingPlatform(
-      position: Vector2(20.0, 40.0),
+      position: Vector2(35.0, 35.0),
       size: Vector2(25, 4),
-      endPosition: Vector2(-30.0, 40.0),
+      endPosition: Vector2(-15.0, 35.0),
       speed: 120.0,
     ));
     
-    // 6. Plasma Orbs (Must collect 3)
-    // Orb 1: Risky near start wind
+    // 6. Plasma Orbs
+    // Orb 1: High Left (per ASCII *)
     add(PlasmaOrb(
-      position: Vector2(-45.0, -30.0),
+      position: Vector2(-90.0, -45.0),
       radius: 3.5,
       fuelAmount: 18.0,
     ));
-    // Orb 2: Risky near Black Hole influence
+    // Orb 2: Below Radiation/Rotating (per ASCII *)
     add(PlasmaOrb(
-      position: Vector2(50.0, 25.0),
+      position: Vector2(30.0, 20.0),
       radius: 3.5,
       fuelAmount: 18.0,
     ));
-    // Orb 3: Near Rotating / Radiation
+    // Orb 3: Risky near Black Hole (The 3rd orb)
     add(PlasmaOrb(
-      position: Vector2(80.0, -25.0),
+      position: Vector2(75.0, 35.0), // Directly under BH
       radius: 3.5,
       fuelAmount: 18.0,
     ));
     
-    // 7. Exit Portal (Far Right Bottom)
-    final portalPos = Vector2(115.0, 45.0);
+    // 7. Exit Portal (Far Right)
+    final portalPos = Vector2(120.0, 45.0);
     add(ExitPortal(
       position: portalPos, 
       onLevelComplete: game.onLevelComplete,
-      size: Vector2(7.0, 7.0),
+      size: Vector2(6.0, 6.0), // 1.2x drone diameter (5.0)
     ));
   }
 }

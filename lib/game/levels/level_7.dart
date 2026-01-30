@@ -33,7 +33,14 @@ class Level7 extends Component with HasGameReference<NexusDriftGame> {
     add(SolarWindZone(
       position: Vector2(-70.0, -10.0),
       size: Vector2(40, 20),
-      windForce: Vector2(3000.0, 0), // Pushing right
+      windForce: Vector2(3000.0, 0), // Pushing right (150 acc)
+    ));
+
+    // Zone 2 (Middle): Pushing Right (New zone per ASCII middle ➤➤➤➤➤)
+    add(SolarWindZone(
+      position: Vector2(10.0, -25.0), // Above radiation
+      size: Vector2(40, 15),
+      windForce: Vector2(3200.0, 0), 
     ));
 
     // Zone 2: Near Exit
@@ -72,7 +79,7 @@ class Level7 extends Component with HasGameReference<NexusDriftGame> {
     
     // Radiation Zone (Middle Corridor)
     add(RadiationZone(
-      position: Vector2(15.0, 5.0),
+      position: Vector2(15.0, 0.0), // Centered slightly higher
       size: Vector2(50, 20),
       damageRate: 13.0,
     ));
@@ -105,10 +112,11 @@ class Level7 extends Component with HasGameReference<NexusDriftGame> {
       radius: 3.8,
       fuelAmount: 18.0,
     ));
-    // Orb 3: Near wind zone 2 / magnet
+
+    // Orb 3: Near wind zone 2 / magnet (Lower path, below Rotating)
     add(PlasmaOrb(
-      position: Vector2(90.0, 20.0),
-      radius: 3.8,
+      position: Vector2(65.0, 25.0), // Rot is at (60, 10). This puts * below-right.
+      radius: 3.5, // 1.25x drone rad
       fuelAmount: 18.0,
     ));
     

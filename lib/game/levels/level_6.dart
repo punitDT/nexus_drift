@@ -78,16 +78,16 @@ class Level6 extends Component with HasGameReference<NexusDriftGame> {
     ));
     
     // 4. Plasma Orbs
-    // Orb 1: Safe curve path
+    // Orb 1: Safe curve path (High, per ASCII)
     add(PlasmaOrb(
-      position: Vector2(-35.0, -35.0),
-      radius: 4.0,
+      position: Vector2(-80.0, -50.0),
+      radius: 3.5, // 1.4x drone radius (2.5) -> 3.5
       fuelAmount: 20.0,
     ));
-    // Orb 2: Risky path near rotating
+    // Orb 2: Risky path near rotating (Magnet-adjacent)
     add(PlasmaOrb(
-      position: Vector2(85.0, 10.0),
-      radius: 4.0,
+      position: Vector2(70.0, 30.0),
+      radius: 3.5,
       fuelAmount: 20.0,
     ));
     

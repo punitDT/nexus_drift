@@ -12,6 +12,7 @@ import 'package:nexus_drift/game/components/solar_wind_zone.dart';
 import 'package:nexus_drift/game/components/black_hole.dart';
 import 'package:nexus_drift/game/components/space_debris.dart';
 import 'package:nexus_drift/game/components/vanishing_platform.dart';
+import 'package:nexus_drift/game/components/wormhole.dart';
 import 'package:nexus_drift/game/nexus_drift_game.dart';
 import 'package:nexus_drift/game/controllers/game_controller.dart';
 import 'package:get/get.dart';
@@ -78,6 +79,14 @@ class Level11 extends Component with HasGameReference<NexusDriftGame> {
         break;
     }
 
+    // Rare Event: Wormhole (10% chance)
+    if (_random.nextDouble() < 0.1) {
+       add(Wormhole(
+         position: Vector2(startX + _random.nextDouble() * _segmentWidth, (_random.nextDouble() - 0.5) * 60),
+         radius: 4.0,
+       ));
+    }
+
     // Always spawn some Orbs for fuel
     _spawnOrbs(startX, endX);
     
@@ -142,7 +151,7 @@ class Level11 extends Component with HasGameReference<NexusDriftGame> {
     final count = (10 * _difficultyScale).toInt();
     for (int i = 0; i < count; i++) {
         final offset = Vector2((_random.nextDouble() - 0.5) * 100, (_random.nextDouble() - 0.5) * 100);
-        final vel = Vector2((_random.nextDouble() - 0.5) * 40 * _difficultyScale, (_random.nextDouble() - 0.5) * 40 * _difficultyScale);
+        final vel = Vector2((_random.nextDouble() - 0.5) * 300 * _difficultyScale, (_random.nextDouble() - 0.5) * 300 * _difficultyScale);
         add(SpaceDebris(
             initialPosition: center + offset,
             initialVelocity: vel,
@@ -188,7 +197,8 @@ class Level11 extends Component with HasGameReference<NexusDriftGame> {
     for (int i = 0; i < count; i++) {
       add(PlasmaOrb(
         position: Vector2(startX + _random.nextDouble() * _segmentWidth, (_random.nextDouble() - 0.5) * 90),
-        radius: (4.0 / (_waveCount * 0.05 + 1)).clamp(2.0, 4.0),
+        // Guide: 0.7-1.0x (1.75 - 2.5)
+        radius: (2.5 / (_waveCount * 0.05 + 1)).clamp(1.75, 2.5),
         fuelAmount: 15.0,
       ));
     }

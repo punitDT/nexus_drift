@@ -38,7 +38,7 @@ class Level1 extends Component with HasGameReference<NexusDriftGame> {
     // x = -125 + 0.38 * 250 = -125 + 95 = -30
     // y = -60 + 0.42 * 120 = -60 + 50.4 = -9.6
     add(PlasmaOrb(
-      position: Vector2(-30.0, -10.0),
+      position: Vector2(-30.0, -9.6), // Guide: 0.38w -> -30, 0.42h -> -9.6
       radius: 5.0, // 2.0x drone radius
       fuelAmount: 35.0,
     ));
@@ -50,8 +50,8 @@ class Level1 extends Component with HasGameReference<NexusDriftGame> {
     add(GamePlatform(position: Vector2(25.0, 20.0), size: Vector2(30, 4)));
     
     // 4. Exit Portal (Far Right)
-    // 85% from left: -125 + 0.85 * 250 = -125 + 212.5 = 87.5
-    final portalPos = Vector2(90.0, 30.0);
+    // 85% from left: -125 + 0.85 * 250 = 87.5
+    final portalPos = Vector2(87.0, 30.0); // Within 75-85% range
     add(ExitPortal(
       position: portalPos, 
       onLevelComplete: game.onLevelComplete,

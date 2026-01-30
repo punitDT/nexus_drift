@@ -53,21 +53,15 @@ class Level4 extends Component with HasGameReference<NexusDriftGame> {
     // 3. Plasma Orbs
     // Orb 1: Near Moving A
     add(PlasmaOrb(
-      position: Vector2(-40.0, -25.0),
+      position: Vector2(-30.0, -12.0), // Guide: -30, -12
       radius: 3.8, // 1.5x drone radius
       fuelAmount: 24.0,
     ));
     // Orb 2: Near Rotating
     add(PlasmaOrb(
-      position: Vector2(25.0, -5.0),
+      position: Vector2(12.5, -2.4), // Guide: 12.5, -2.4
       radius: 3.8,
       fuelAmount: 24.0,
-    ));
-    // Orb 3: Near Moving B
-    add(PlasmaOrb(
-      position: Vector2(70.0, 15.0),
-      radius: 3.8,
-      fuelAmount: 25.0,
     ));
     
     // 4. Exit Portal (Far Right)

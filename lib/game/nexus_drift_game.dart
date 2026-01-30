@@ -250,7 +250,15 @@ class NexusDriftGame extends Forge2DGame with PanDetector {
 
     if (isOffScreen) {
       _offScreenTime += dt;
-      if (_offScreenTime > (controller.currentLevel.value == 11 ? 2.8 : 4.0)) {
+      double timeout = 4.0;
+      final level = controller.currentLevel.value;
+      if (level == 7) timeout = 3.8;
+      else if (level == 8) timeout = 3.5;
+      else if (level == 9) timeout = 3.2;
+      else if (level == 10) timeout = 3.0;
+      else if (level == 11) timeout = 2.8;
+
+      if (_offScreenTime > timeout) {
         failLevel("LOST IN SPACE");
       }
     } else {
