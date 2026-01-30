@@ -5,6 +5,8 @@ import '../modules/home/views/home_view.dart';
 import '../modules/home/views/welcome_view.dart';
 import '../modules/home/views/level_select_view.dart';
 
+import '../modules/home/views/settings_view.dart'; // Added import
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -26,6 +28,11 @@ class AppPages {
     GetPage(
       name: _Paths.GAME,
       page: () => const HomeView(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => const SettingsView(),
       binding: HomeBinding(),
     ),
   ];

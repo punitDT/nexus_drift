@@ -25,14 +25,20 @@ class HomeView extends GetView<HomeController> {
             isWin: true,
             title: "MISSION SUCCESS",
             message: (game as NexusDriftGame).lossMessage,
-            onAction: () => Get.offAllNamed(Routes.LEVEL_SELECT), 
+            onAction: () {
+               // Reload the Game Route to start the next level (already incremented in controller)
+               Get.offAndToNamed(Routes.GAME); 
+            },
             onMenu: () => Get.offAllNamed(Routes.WELCOME),
           ),
           'loss': (context, game) => ResultOverlay(
             isWin: false,
             title: "MISSION FAILED",
             message: (game as NexusDriftGame).lossMessage,
-            onAction: () => Get.offAllNamed(Routes.LEVEL_SELECT), 
+            onAction: () {
+              // Reload Game Route to Retry
+              Get.offAndToNamed(Routes.GAME);
+            },
             onMenu: () => Get.offAllNamed(Routes.WELCOME),
           ),
         },
